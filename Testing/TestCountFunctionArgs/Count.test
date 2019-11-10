@@ -1,0 +1,9 @@
+#include <count_function_args.h>
+#include <string>
+#include <unordered_map>
+TEST(Kek, TestingTest) {
+    string my_str = "f()";
+    auto ans = count_function_args(my_str);
+    EXPECT_EQ(ans[0], 0U);
+    EXPECT_TRUE(ans.size() == 1);
+}
