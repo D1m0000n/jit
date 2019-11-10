@@ -1,3 +1,3 @@
 # jit
 
-To run this task, use **cmp**. Just write './cmp main.cpp' 
+To run this task, use **cmp**. Just write *./cmp main.cpp* 
