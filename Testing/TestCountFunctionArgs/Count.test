@@ -1,9 +1,86 @@
 #include <count_function_args.h>
 #include <string>
-#include <unordered_map>
-TEST(Kek, TestingTest) {
-    string my_str = "f()";
-    auto ans = count_function_args(my_str);
-    EXPECT_EQ(ans[0], 0U);
-    EXPECT_TRUE(ans.size() == 1);
+
+TEST(ZeroArgs, SimpleTest) {
+    string test_str = "f()";
+    auto ans = count_function_args(test_str);
+    EXPECT_EQ(ans["f"], 0);
+    EXPECT_NE(ans.size(), 0);
+}
+
+TEST(UnoArg, SimpleTest){
+    string test_str = "f(1)";
+    auto ans = count_function_args(test_str);
+    EXPECT_EQ(ans["f"], 1);
+}
+
+TEST(UnoArg, HardTest) {
+    string test_str;
+    const int alph_size = 26;
+    for(int i = 0; i < alph_size; i++){
+        test_str += std::to_string('a' + i);
+        test_str += '(';
+    }
+    for(int i = 0; i < alph_size; i++){
+        test_str += ')';
+    }
+    auto ans = count_function_args(test_str);
+    EXPECT_EQ(ans.size(), alph_size);
+    for(int i = 0; i < 25; i++){
+        EXPECT_EQ(ans[std::to_string('a' + i)], 1);
+    }
+    EXPECT_EQ(ans["z"], 0);
+}
+
+TEST(TwoArgs, SimpleTest){
+    string test_str = "f(1, 2)";
+    auto ans = count_function_args(test_str);
+    EXPECT_EQ(ans["f"], 2);
+    EXPECT_EQ(ans.size(), 1);
+}
+
+TEST(TwoArgs, HardTest) {
+    string test_str;
+    const int alph_size = 26;
+    for(int i = 0; i < alph_size; i++){
+        test_str += std::to_string('a' + i);
+        test_str += '(';
+    }
+    for(int i = 0; i < alph_size - 1; i++){
+        test_str += ')';
+    }
+    test_str += ',';
+    for(int i = 0; i < alph_size; i++){
+        test_str += std::to_string('A' + i);
+        test_str += '(';
+    }
+    for(int i = 0; i < alph_size; i++){
+        test_str += ')';
+    }
+    test_str += ')';
+    auto ans = count_function_args(test_str);
+    EXPECT_EQ(ans.size(), alph_size * 2);
+    EXPECT_EQ(ans[std::to_string('a')], 2);
+    for(int i = 0; i < 24; i++){
+        EXPECT_EQ(ans[std::to_string('b' + i)], 1);
+    }
+    for(int i = 0; i < 25; i++){
+        EXPECT_EQ(ans[std::to_string('A' + i)], 1);
+    }
+    EXPECT_EQ(ans[std::to_string('z')], 0);
+    EXPECT_EQ(ans[std::to_string('Z')], 0);
+}
+
+TEST(ThreeArgs, SimpleTest){
+    string test_str = "f(1, 2, 3)";
+    auto ans = count_function_args(test_str);
+    EXPECT_EQ(ans["f"], 3);
+    EXPECT_EQ(ans.size(), 1);
+}
+
+TEST(FourArgs, SimpleTest){
+    string test_str = "f(1, 2, 3, 4)";
+    auto ans = count_function_args(test_str);
+    EXPECT_EQ(ans["f"], 4);
+    EXPECT_EQ(ans.size(), 1);
 }

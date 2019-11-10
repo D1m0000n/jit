@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Count.test"
+#include "MakeMap.test"
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

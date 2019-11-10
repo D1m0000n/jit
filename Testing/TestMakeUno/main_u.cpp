@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Count.test"
+#include "Uno.test"
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
