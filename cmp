@@ -1,0 +1,3 @@
+#!/bin/bash
+arm-linux-gnueabi-g++ -marm $1 -o solve
+qemu-arm -L $LINARO_SYSROOT solve
