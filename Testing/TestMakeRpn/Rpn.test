@@ -1,0 +1,24 @@
+#include "make_rpn.h"
+#include <vector>
+
+TEST(CreatingRpn, FirstTest) {
+    string test_str = "1+f()+g(a)";
+    auto ans = make_rpn(test_str);
+    EXPECT_FALSE(ans.empty());
+}
+
+TEST(CheckCorrectRpn, EasyTest) {
+    string test_str = "1+2+3";
+    auto ans = make_rpn(test_str);
+    string result;
+    for(int i = 0; i < ans.size(); i++) result += ans[i];
+    EXPECT_EQ("12+3+", result);
+}
+
+TEST(CheckCorrectRpn, HardTest) {
+    string test_str = "#1+func(a,b,g(z))";
+    auto ans = make_rpn(test_str);
+    string result;
+    for(int i = 0; i < ans.size(); i++) result += ans[i];
+    EXPECT_EQ("1#abzgfunc+", result);
+}

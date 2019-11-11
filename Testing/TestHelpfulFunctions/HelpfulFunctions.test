@@ -1,0 +1,87 @@
+#include <helpful_functions.h>
+#include <string>
+
+TEST(IsOperator, FirstTest) {
+    string test_str = "#";
+    bool ans = is_operator(test_str);
+    EXPECT_TRUE(ans);
+}
+
+TEST(IsOperator, SecondTest) {
+    string test_str = "+";
+    bool ans = is_operator(test_str);
+    EXPECT_TRUE(ans);
+}
+
+TEST(IsOperator, ThirdTest) {
+    string test_str = "-";
+    bool ans = is_operator(test_str);
+    EXPECT_TRUE(ans);
+}
+
+TEST(IsOperator, FourthTest) {
+    string test_str = "$";
+    bool ans = is_operator(test_str);
+    EXPECT_TRUE(ans);
+}
+
+TEST(IsOperator, FifthTest) {
+    string test_str = "*";
+    bool ans = is_operator(test_str);
+    EXPECT_TRUE(ans);
+}
+
+TEST(IsOperator, SixthTest) {
+    string test_str = "#1";
+    bool ans = is_operator(test_str);
+    EXPECT_FALSE(ans);
+}
+
+TEST(IsOperator, SeventhTest) {
+    string test_str = "a";
+    bool ans = is_operator(test_str);
+    EXPECT_FALSE(ans);
+}
+
+TEST(GetPriority, FirstTest) {
+    string test_str = "#";
+    int ans = get_priority(test_str);
+    EXPECT_EQ(ans, 3);
+}
+
+TEST(GetPriority, SecondTest) {
+    string test_str = "*";
+    int ans = get_priority(test_str);
+    EXPECT_EQ(ans, 2);
+}
+
+TEST(GetPriority, ThirdTest) {
+    string test_str = "+";
+    int ans = get_priority(test_str);
+    EXPECT_EQ(ans, 1);
+}
+
+TEST(IsConst, FirstTest) {
+    string test_str = "123";
+    bool ans = Is_const(test_str);
+    EXPECT_TRUE(ans);
+}
+
+TEST(IsConst, SecondTest) {
+    string test_str = "1dva3";
+    bool ans = Is_const(test_str);
+    EXPECT_FALSE(ans);
+}
+
+TEST(S2I, Positive){
+    string test_str = "123";
+    int ans = string_to_int(test_str, 1);
+    EXPECT_EQ(ans, 123);
+}
+
+
+TEST(S2I, Negative){
+    string test_str = "456";
+    int ans = string_to_int(test_str, -1);
+    EXPECT_EQ(ans, -456);
+}

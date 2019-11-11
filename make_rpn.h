@@ -8,8 +8,10 @@
 #endif //JIT_COMPILE_MAKE_RPN_H
 #include "make_map.h"
 #include <stack>
+#include <vector>
 #include "helpful_functions.h"
 
+using std::vector;
 using std::stack;
 
 vector<string> make_rpn(string expression)

@@ -22,6 +22,8 @@ enable_testing()
 
 # uncommet one of the following commands for running tests for structure with same name
 
-add_subdirectory(TestMakeMap)
+add_subdirectory(TestHelpfulFunctions)
+#add_subdirectory(TestMakeRpn)
+#add_subdirectory(TestMakeMap)
 #add_subdirectory(TestMakeUno)
 #add_subdirectory(TestCountFunctionArgs)

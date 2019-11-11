@@ -1,0 +1,25 @@
+#include "make_map.h"
+
+TEST(CheckFunctions, FirstTest) {
+    string test_str = "1+f(KUKAREK)";
+    auto ans = make_map(test_str);
+    EXPECT_FALSE(ans.empty());
+    EXPECT_EQ(ans["f"], 1);
+    EXPECT_EQ(ans["KUKAREK"], 0);
+    EXPECT_EQ(ans["1"], 0);
+}
+
+TEST(CheckFunctions, SecondTest) {
+    string test_str;
+    const int numbers = 100;
+    for(int i = 0; i < numbers; i++) {
+        test_str += std::to_string(i);
+        test_str += '+';
+    }
+    test_str.pop_back();
+    auto ans = make_map(test_str);
+    EXPECT_FALSE(ans.empty());
+    for(int i = 0; i < numbers; i++) {
+        EXPECT_EQ(ans[std::to_string(i)], 0);
+    }
+}
